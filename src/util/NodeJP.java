@@ -12,6 +12,6 @@ public class NodeJP {
     }
 
     public void displayNodeJP() {
-        System.out.print(Data + " ");
+        System.out.println(Data.toString());
     }
 }

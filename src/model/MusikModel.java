@@ -24,7 +24,8 @@ public class MusikModel {
         return Artis;
     }
 
-    public String displayMusic() {
+    @Override
+    public String toString() {
         return "MusicModel{IDMusic = " + IDMusik + ", JudulMusic = " + JudulMusik + ", Artis = " + Artis + '}';
     }
 

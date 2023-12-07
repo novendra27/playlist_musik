@@ -18,4 +18,10 @@ public class JudulPlaylistModel {
         return NamaPlaylist;
     }
 
+    @Override
+    public String toString() {
+        return "JudulPlaylistModel{" + "IDJudulPlaylist = " + IDJudulPlaylist + ", NamaPlaylist = " + NamaPlaylist + '}';
+    }
+
+    
 }

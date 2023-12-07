@@ -1,18 +1,18 @@
 package controller;
 
 import service.DBService;
-import util.ArrayMusik;
+import util.LinkedListMusik;
 
 public class MusikController {
     
     private static DBService service = new DBService();
-    private static ArrayMusik arrayMusik = new ArrayMusik(service.getSizeMusikService());
+    private static LinkedListMusik linkedListMusik = new LinkedListMusik();
 
     public static void getMusik() {
-        arrayMusik = service.getMusikService();
-        if (arrayMusik != null) {
+        linkedListMusik = service.getMusikService();
+        if (linkedListMusik != null) {
             System.out.println("Berhasil menambahkan musik ke array");
-            arrayMusik.displayArray();
+            linkedListMusik.displayList();
         } else {
             System.out.println("Gagal menambahkan musik ke array");
         }

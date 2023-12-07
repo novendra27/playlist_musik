@@ -10,7 +10,7 @@ public class NodeMusik {
         this.Data = Data;
     }
 
-    public void displayNodeJP() {
-        System.out.print(Data + " ");
+    public void displayNodeMusik() {
+        System.out.println(Data.toString());
     }
 }

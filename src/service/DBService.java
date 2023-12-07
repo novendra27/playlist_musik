@@ -1,9 +1,9 @@
 package service;
 
 import repository.DBManager;
-import util.ArrayJudulPlaylist;
-import util.ArrayMusik;
+import util.LinkedListMusik;
 import util.HashTable;
+import util.LinkedListJP;
 
 public class DBService extends DBManager{
     public static HashTable getPlaylistService() {
@@ -22,35 +22,19 @@ public class DBService extends DBManager{
         return 0;
     }
     
-    public static ArrayMusik getMusikService() {
-        ArrayMusik arrayMusik = getMusik(getSizeMusik());
-        if (arrayMusik.isEmpty()) {
+    public static LinkedListMusik getMusikService() {
+        LinkedListMusik linkedListMusik = getMusik();
+        if (linkedListMusik.isEmpty()) {
             return null;
         }
-        return arrayMusik;
+        return linkedListMusik;
     }
     
-    public static int getSizeMusikService() {
-        int size = getSizeMusik();
-        if (size > 0) {
-            return size;
-        }
-        return 0;
-    }
-    
-    public static ArrayJudulPlaylist getJudulPlaylistService() {
-        ArrayJudulPlaylist judulPlaylist = getJudulPlaylist(getSizeJudulPlaylist());
-        if (judulPlaylist.isEmpty()) {
+    public static LinkedListJP getJudulPlaylistService() {
+        LinkedListJP linkedListJP = getJudulPlaylist();
+        if (linkedListJP.isEmpty()) {
             return null;
         }
-        return judulPlaylist;
-    }
-    
-    public static int getSizeJudulPlaylistService() {
-        int size = getSizeJudulPlaylist();
-        if (size > 0) {
-            return size;
-        }
-        return 0;
+        return linkedListJP;
     }
 }
