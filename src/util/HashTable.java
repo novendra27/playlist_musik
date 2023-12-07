@@ -16,15 +16,15 @@ public class HashTable {
     }
 
     public void displayTable() {
-        System.out.println("Table: ");
+        System.out.println("Playlist : ");
         for (int j = 0; j < size; j++) {
-            System.out.print(" " + j + ". ");
-            hashArray[j].displayList();
+            hashArray[j].displayList(j);
         }
     }
 
     public int hashFunc(String IDJudulPlaylist) {
         int idHash = Integer.parseInt(IDJudulPlaylist.substring(3));
+//        System.out.println(idHash);
         return idHash % size;
     }
 

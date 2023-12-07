@@ -66,8 +66,8 @@ public class SortedCircularLinkList {
         return null;
     }
 
-    public void displayList() {
-        System.out.print("List (first-->last): ");
+    public void displayList(int index) {
+        System.out.print("Playlist " + (index + 1) + " : ");
         if (first != null) {
             CircularLink current = first;
             do {

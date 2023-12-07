@@ -2,8 +2,8 @@ package model;
 
 public class PlaylistModel {
 
-    String IDJudulPlaylist;
-    String IDMusic;
+    private String IDJudulPlaylist;
+    private String IDMusic;
 
     public PlaylistModel(String IDPlaylist, String IDMusic) {
         this.IDJudulPlaylist = IDPlaylist;
