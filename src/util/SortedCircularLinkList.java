@@ -81,4 +81,11 @@ public class SortedCircularLinkList {
     public boolean isEmpty() {
         return first == null;
     }
+    
+    public PlaylistModel peekLast() {
+        if (isEmpty()) {
+            return null;
+        }
+        return first.getPlaylist();
+    }
 }

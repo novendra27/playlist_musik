@@ -19,8 +19,8 @@ public class LinkedListJP {
         first = first.next;
         return temp;
     }
-    
-    public String findIDJudulPlaylist(String key) {
+
+    public String findID(String key) {
         NodeJP current = first;
         while (current.Data.getIDJudulPlaylist() != key) {
             if (current.next == null) {
@@ -31,7 +31,7 @@ public class LinkedListJP {
         }
         return current.Data.getIDJudulPlaylist();
     }
-    
+
     public void displayList() {
         System.out.println("List(first-->last):");
         NodeJP current = first;
@@ -73,5 +73,16 @@ public class LinkedListJP {
         previous.next = null;
 
         return current;
+    }
+
+    public JudulPlaylistModel peekLast() {
+        if (isEmpty()) {
+            return null;
+        }
+        NodeJP current = first;
+        while (current.next != null) {
+            current = current.next;
+        }
+        return current.Data;
     }
 }

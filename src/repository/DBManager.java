@@ -19,11 +19,11 @@ public class DBManager {
     protected static HashTable getPlaylist(int size) {
         HashTable hashTable = new HashTable(size);
         try {
-            String sql = "SELECT id_judul_playlist, id_musik FROM `tb_playlist`";
+            String sql = "SELECT * FROM `tb_playlist`";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
             ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
-                playlistModel = new PlaylistModel(result.getString("id_judul_playlist"), result.getString("id_musik"));
+                playlistModel = new PlaylistModel(result.getString("id_playlist"), result.getString("id_judul_playlist"), result.getString("id_musik"));
                 hashTable.insert(playlistModel);
             }
             return hashTable;
@@ -81,5 +81,21 @@ public class DBManager {
             e.printStackTrace();
         }
         return null;
+    }
+
+    protected static boolean addJudulPlaylist(String IDPlaylist, String namaPlaylist) {
+        try {
+            String sql = "INSERT INTO `tb_judul_playlist`(`id_judul_playlist`, `nama_playlist`) VALUES (?,?)";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, IDPlaylist);
+            preparedStatement.setString(2, namaPlaylist);
+            int result = preparedStatement.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

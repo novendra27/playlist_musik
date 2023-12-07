@@ -6,6 +6,7 @@ public class HashTable {
 
     private SortedCircularLinkList[] hashArray;
     private int size;
+    private int lastInsertIndex;
 
     public HashTable(int size) {
         this.size = size;
@@ -25,6 +26,7 @@ public class HashTable {
     public int hashFunc(String IDJudulPlaylist) {
         int idHash = Integer.parseInt(IDJudulPlaylist.substring(3));
 //        System.out.println(idHash);
+        lastInsertIndex = idHash % size;
         return idHash % size;
     }
 
@@ -44,7 +46,7 @@ public class HashTable {
         int hashVal = hashFunc(IDJudulPlaylist);
         return hashArray[hashVal].find(IDJudulPlaylist);
     }
-    
+
     public boolean isEmpty() {
         for (int i = 0; i < size; i++) {
             if (!hashArray[i].isEmpty()) {
@@ -52,5 +54,12 @@ public class HashTable {
             }
         }
         return true;
+    }
+
+    public PlaylistModel peekLast() {
+        if (!isEmpty()) {
+            return hashArray[lastInsertIndex].peekLast();
+        }
+        return null;
     }
 }

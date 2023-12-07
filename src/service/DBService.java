@@ -5,7 +5,8 @@ import util.LinkedListMusik;
 import util.HashTable;
 import util.LinkedListJP;
 
-public class DBService extends DBManager{
+public class DBService extends DBManager {
+
     public static HashTable getPlaylistService() {
         HashTable hashTable = getPlaylist(getSizePlaylist());
         if (hashTable.isEmpty()) {
@@ -13,7 +14,7 @@ public class DBService extends DBManager{
         }
         return hashTable;
     }
-    
+
     public static int getSizePlaylistService() {
         int size = getSizePlaylist();
         if (size > 0) {
@@ -21,7 +22,7 @@ public class DBService extends DBManager{
         }
         return 0;
     }
-    
+
     public static LinkedListMusik getMusikService() {
         LinkedListMusik linkedListMusik = getMusik();
         if (linkedListMusik.isEmpty()) {
@@ -29,12 +30,19 @@ public class DBService extends DBManager{
         }
         return linkedListMusik;
     }
-    
+
     public static LinkedListJP getJudulPlaylistService() {
         LinkedListJP linkedListJP = getJudulPlaylist();
         if (linkedListJP.isEmpty()) {
             return null;
         }
         return linkedListJP;
+    }
+
+    public static boolean addJudulPlaylistService(String IDPlaylist, String namaPlaylist) {
+        if (addJudulPlaylist(IDPlaylist, namaPlaylist)) {
+            return true;
+        }
+        return false;
     }
 }

@@ -62,4 +62,15 @@ public class LinkedListMusik {
 
         return current;
     }
+    
+    public String peekLastID() {
+        if (isEmpty()) {
+            return null;
+        }
+        NodeMusik current = first;
+        while (current.next != null) {
+            current = current.next;
+        }
+        return current.Data.getIDMusic();
+    }
 }
