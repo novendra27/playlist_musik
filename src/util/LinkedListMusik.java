@@ -66,7 +66,7 @@ public class LinkedListMusik {
         return current;
     }
 
-    public String peekLastID() {
+    public MusikModel peekLast() {
         if (isEmpty()) {
             return null;
         }
@@ -74,7 +74,7 @@ public class LinkedListMusik {
         while (current.next != null) {
             current = current.next;
         }
-        return current.Data.getIDMusic();
+        return current.Data;
     }
     
     public MusikModel find(String key) {

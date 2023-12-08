@@ -23,14 +23,19 @@ public class MusikController {
     }
 
     public static void insertMusik(String judulMusic, String artis) {
-        MusikModel musikModel = new MusikModel(generateID(), judulMusic, artis);
+        MusikModel musikModel = new MusikModel(peekLastID(), judulMusic, artis);
         linkedListMusik.insertLast(musikModel);
-        service.addMusikService(generateID(), judulMusic, artis);
+        service.addMusikService(linkedListMusik.peekLast().getIDMusic(), linkedListMusik.peekLast().getJudulMusic(), linkedListMusik.peekLast().getArtis());
     }
 
-    public static String generateID() {
-        String IDMusik = linkedListMusik.peekLastID();
+    public static String peekLastID() {
+        String IDMusik = linkedListMusik.peekLast().getJudulMusic();
         int intID = Integer.parseInt(IDMusik.substring(3)) + 1;
+        return generateID(intID);
+    }
+    
+    public static String generateID(int intID) {
+        String IDMusik;
         if (intID < 10) {
             IDMusik = "M00" + intID;
         } else if (intID < 100) {

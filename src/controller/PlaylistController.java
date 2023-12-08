@@ -25,16 +25,20 @@ public class PlaylistController {
     }
 
     public static void insertPlaylist(String IDJudulPlaylist, String IDMusik) {
-        String IDPlaylist = generateID();
-        PlaylistModel playlistModel = new PlaylistModel(IDPlaylist, IDJudulPlaylist, IDMusik, musikController.find(IDMusik).getJudulMusic());
+        PlaylistModel playlistModel = new PlaylistModel(peekLastID(), IDJudulPlaylist, IDMusik, musikController.find(IDMusik).getJudulMusic());
         getPlaylist();
         hashTable.insert(playlistModel);
-        service.addPlaylistService(IDPlaylist, IDJudulPlaylist, IDMusik);
+        service.addPlaylistService(hashTable.peekLast().getIDPlaylist(), hashTable.peekLast().getIDJudulPlaylist(), hashTable.peekLast().getIDMusik());
     }
-
-    public static String generateID() {
+ 
+    public static String peekLastID(){
         String IDPlaylist = hashTable.peekLast().getIDPlaylist();
         int intID = Integer.parseInt(IDPlaylist.substring(3)) + 1;
+        return generateID(intID);
+    }
+    
+    public static String generateID(int intID) {
+        String IDPlaylist;
         if (intID < 10) {
             IDPlaylist = "P00" + intID;
         } else if (intID < 100) {
@@ -48,10 +52,6 @@ public class PlaylistController {
     public static void main(String[] args) {
         getPlaylist();
         musikController.getMusik();
-        insertPlaylist("J001", "M003");
-        insertPlaylist("J005", "M004");
-        insertPlaylist("J003", "M002");
         displayAllPlaylist();
-//        displayPlaylist("J001");
     }
 }
