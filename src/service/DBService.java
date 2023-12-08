@@ -39,8 +39,22 @@ public class DBService extends DBManager {
         return linkedListJP;
     }
 
-    public static boolean addJudulPlaylistService(String IDPlaylist, String namaPlaylist) {
-        if (addJudulPlaylist(IDPlaylist, namaPlaylist)) {
+    public static boolean addJudulPlaylistService(String IDJudulPlaylist, String namaPlaylist) {
+        if (addJudulPlaylist(IDJudulPlaylist, namaPlaylist)) {
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean addMusikService(String IDMusik, String judulMusik, String artis) {
+        if (addMusik(IDMusik, judulMusik, artis)) {
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean addPlaylistService(String IDPlaylist, String IDJudulPlaylist, String IDMusik) {
+        if (addPlaylist(IDPlaylist, IDJudulPlaylist, IDMusik)) {
             return true;
         }
         return false;

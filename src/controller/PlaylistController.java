@@ -22,11 +22,11 @@ public class PlaylistController {
         hashTable.displayTable();
     }
 
-    public static void insertPlaylist(String IDJudulPlaylist, String IDJudulMusik) {
-        PlaylistModel playlistModel = new PlaylistModel(generateID(), IDJudulPlaylist, IDJudulMusik);
+    public static void insertPlaylist(String IDJudulPlaylist, String IDMusik) {
+        PlaylistModel playlistModel = new PlaylistModel(generateID(), IDJudulPlaylist, IDMusik);
         getPlaylist();
         hashTable.insert(playlistModel);
-        hashTable.displayTable();
+        service.addPlaylistService(generateID(), IDJudulPlaylist, IDMusik);
     }
 
     public static String generateID() {
@@ -46,6 +46,5 @@ public class PlaylistController {
     public static void main(String[] args) {
         getPlaylist();
         displayPlaylist();
-        insertPlaylist("J001", "a");
     }
 }

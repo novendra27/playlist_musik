@@ -25,8 +25,7 @@ public class JudulPlaylistController {
     public static void insertJudulPlaylist(String namaPlaylist) {
         JudulPlaylistModel judulPlaylistModel = new JudulPlaylistModel(generateID(), namaPlaylist);
         linkedListJP.insertLast(judulPlaylistModel);
-        linkedListJP.displayList();
-//        service.addJudulPlaylistService(linkedListJP.peekLast().getIDJudulPlaylist(), linkedListJP.peekLast().getNamaPlaylist());
+        service.addJudulPlaylistService(linkedListJP.peekLast().getIDJudulPlaylist(), linkedListJP.peekLast().getNamaPlaylist());
     }
 
     public static String generateID() {

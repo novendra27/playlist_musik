@@ -24,7 +24,7 @@ public class HashTable {
     }
 
     public int hashFunc(String IDJudulPlaylist) {
-        int idHash = Integer.parseInt(IDJudulPlaylist.substring(3));
+        int idHash = Integer.parseInt(IDJudulPlaylist.substring(3)) - 1;
 //        System.out.println(idHash);
         lastInsertIndex = idHash % size;
         return idHash % size;

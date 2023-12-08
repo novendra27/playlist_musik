@@ -83,12 +83,46 @@ public class DBManager {
         return null;
     }
 
-    protected static boolean addJudulPlaylist(String IDPlaylist, String namaPlaylist) {
+    protected static boolean addJudulPlaylist(String IDJudulPlaylist, String namaPlaylist) {
         try {
             String sql = "INSERT INTO `tb_judul_playlist`(`id_judul_playlist`, `nama_playlist`) VALUES (?,?)";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
-            preparedStatement.setString(1, IDPlaylist);
+            preparedStatement.setString(1, IDJudulPlaylist);
             preparedStatement.setString(2, namaPlaylist);
+            int result = preparedStatement.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    protected static boolean addMusik(String IDMusik, String judulMusik, String artis) {
+        try {
+            String sql = "INSERT INTO `tb_musik`(`id_musik`, `judul_musik`, `artis`) VALUES (?,?,?)";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, IDMusik);
+            preparedStatement.setString(2, judulMusik);
+            preparedStatement.setString(3, artis);
+            int result = preparedStatement.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    protected static boolean addPlaylist(String IDPlaylist, String IDJudulPlaylist, String IDMusik) {
+        try {
+            String sql = "INSERT INTO `tb_playlist`(`id_playlist`, `id_judul_playlist`, `id_musik`) VALUES (?,?,?)";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, IDPlaylist);
+            preparedStatement.setString(2, IDJudulPlaylist);
+            preparedStatement.setString(3, IDMusik);
             int result = preparedStatement.executeUpdate();
             if (result == 1) {
                 return true;

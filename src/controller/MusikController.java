@@ -25,7 +25,7 @@ public class MusikController {
     public static void insertMusik(String judulMusic, String artis) {
         MusikModel musikModel = new MusikModel(generateID(), judulMusic, artis);
         linkedListMusik.insertLast(musikModel);
-        linkedListMusik.displayList();
+        service.addMusikService(generateID(), judulMusic, artis);
     }
 
     public static String generateID() {
