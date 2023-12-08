@@ -77,11 +77,23 @@ public class SortedCircularLinkList {
         }
         System.out.println("");
     }
-    
+
+    public void displayList(int index, String namaPlaylist) {
+        System.out.print("Playlist " + namaPlaylist + " : ");
+        if (first != null) {
+            CircularLink current = first;
+            do {
+                current.displayLink();
+                current = current.next;
+            } while (current != first);
+        }
+        System.out.println("");
+    }
+
     public boolean isEmpty() {
         return first == null;
     }
-    
+
     public PlaylistModel peekLast() {
         if (isEmpty()) {
             return null;

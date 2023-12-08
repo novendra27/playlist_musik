@@ -11,6 +11,6 @@ public class NodeMusik {
     }
 
     public void displayNodeMusik() {
-        System.out.println(Data.toString());
+        System.out.println(Data.displayMusik());
     }
 }

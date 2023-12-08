@@ -19,11 +19,11 @@ public class DBManager {
     protected static HashTable getPlaylist(int size) {
         HashTable hashTable = new HashTable(size);
         try {
-            String sql = "SELECT * FROM `tb_playlist`";
+            String sql = "SELECT p.id_playlist, p.id_judul_playlist, p.id_musik, m.judul_musik FROM tb_playlist p INNER JOIN tb_musik m ON p.id_musik = m.id_musik";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
             ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
-                playlistModel = new PlaylistModel(result.getString("id_playlist"), result.getString("id_judul_playlist"), result.getString("id_musik"));
+                playlistModel = new PlaylistModel(result.getString("id_playlist"), result.getString("id_judul_playlist"), result.getString("id_musik"), result.getString("judul_musik"));
                 hashTable.insert(playlistModel);
             }
             return hashTable;

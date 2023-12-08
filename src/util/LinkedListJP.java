@@ -20,22 +20,24 @@ public class LinkedListJP {
         return temp;
     }
 
-    public String findID(String key) {
+    public JudulPlaylistModel find(String key) {
         NodeJP current = first;
-        while (current.Data.getIDJudulPlaylist() != key) {
-            if (current.next == null) {
-                return null;
+        while (current != null) {
+            if (current.Data.getIDJudulPlaylist().equals(key)) {
+                return current.Data;
             } else {
                 current = current.next;
             }
         }
-        return current.Data.getIDJudulPlaylist();
+        return current.Data;
     }
 
     public void displayList() {
-        System.out.println("List(first-->last):");
+        System.out.println("Daftar Judul Playlist yang Tersedia : ");
         NodeJP current = first;
+        int i = 1;
         while (current != null) {
+            System.out.print(i++ + ". ");
             current.displayNodeJP();
             current = current.next;
         }

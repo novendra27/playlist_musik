@@ -23,6 +23,11 @@ public class HashTable {
         }
     }
 
+    public void displayTable(String IDJudulPlaylist, String namaPlaylist) {
+        int index = hashFunc(IDJudulPlaylist);
+        hashArray[index].displayList(index, namaPlaylist);
+    }
+
     public int hashFunc(String IDJudulPlaylist) {
         int idHash = Integer.parseInt(IDJudulPlaylist.substring(3)) - 1;
 //        System.out.println(idHash);

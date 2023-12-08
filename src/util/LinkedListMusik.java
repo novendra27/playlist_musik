@@ -4,6 +4,7 @@ import model.JudulPlaylistModel;
 import model.MusikModel;
 
 public class LinkedListMusik {
+
     private NodeMusik first;
 
     public LinkedListMusik() {
@@ -19,11 +20,13 @@ public class LinkedListMusik {
         first = first.next;
         return temp;
     }
-    
+
     public void displayList() {
-        System.out.println("List(first-->last):");
+        System.out.println("Daftar Musik yang Tersedia : ");
         NodeMusik current = first;
+        int i = 1;
         while (current != null) {
+            System.out.print(i++ + ". ");
             current.displayNodeMusik();
             current = current.next;
         }
@@ -62,7 +65,7 @@ public class LinkedListMusik {
 
         return current;
     }
-    
+
     public String peekLastID() {
         if (isEmpty()) {
             return null;
@@ -72,5 +75,17 @@ public class LinkedListMusik {
             current = current.next;
         }
         return current.Data.getIDMusic();
+    }
+    
+    public MusikModel find(String key) {
+        NodeMusik current = first;
+        while (current != null) {
+            if (current.Data.getIDMusic().equals(key)) {
+                return current.Data;
+            } else {
+                current = current.next;
+            }
+        }
+        return current.Data;
     }
 }

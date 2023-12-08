@@ -18,7 +18,7 @@ public class MusikController {
         }
     }
 
-    public static void displayMusik() {
+    public static void displayAllMusik() {
         linkedListMusik.displayList();
     }
 
@@ -40,9 +40,13 @@ public class MusikController {
         }
         return IDMusik;
     }
+    
+    public static MusikModel find(String IDMusik){
+        return linkedListMusik.find(IDMusik);
+    }
 
     public static void main(String[] args) {
         getMusik();
-        displayMusik();
+        displayAllMusik();
     }
 }

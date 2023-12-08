@@ -12,6 +12,6 @@ public class NodeJP {
     }
 
     public void displayNodeJP() {
-        System.out.println(Data.toString());
+        System.out.println(Data.displayJudulPlaylist());
     }
 }

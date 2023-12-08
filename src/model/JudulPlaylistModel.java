@@ -18,9 +18,8 @@ public class JudulPlaylistModel {
         return NamaPlaylist;
     }
 
-    @Override
-    public String toString() {
-        return "JudulPlaylistModel{" + "IDJudulPlaylist = " + IDJudulPlaylist + ", NamaPlaylist = " + NamaPlaylist + '}';
+    public String displayJudulPlaylist() {
+        return "Playlist " + NamaPlaylist;
     }
 
     

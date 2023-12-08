@@ -8,25 +8,28 @@ public class PlaylistController {
 
     private static DBService service = new DBService();
     private static HashTable hashTable = new HashTable(service.getSizePlaylistService());
+    private static JudulPlaylistController JPController = new JudulPlaylistController();
+    private static MusikController musikController = new MusikController();
 
     public static void getPlaylist() {
         hashTable = service.getPlaylistService();
-        if (hashTable != null) {
-            System.out.println("Berhasil menambahkan playlist ke hash table");
-        } else {
-            System.out.println("Gagal menambahkan playlist ke hash table");
-        }
     }
 
-    public static void displayPlaylist() {
+    public static void displayAllPlaylist() {
         hashTable.displayTable();
+    }
+    
+    public static void displayPlaylist(String IDJudulPlaylist) {
+        JPController.getJudulPlaylist();
+        hashTable.displayTable(IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist());
     }
 
     public static void insertPlaylist(String IDJudulPlaylist, String IDMusik) {
-        PlaylistModel playlistModel = new PlaylistModel(generateID(), IDJudulPlaylist, IDMusik);
+        String IDPlaylist = generateID();
+        PlaylistModel playlistModel = new PlaylistModel(IDPlaylist, IDJudulPlaylist, IDMusik, musikController.find(IDMusik).getJudulMusic());
         getPlaylist();
         hashTable.insert(playlistModel);
-        service.addPlaylistService(generateID(), IDJudulPlaylist, IDMusik);
+        service.addPlaylistService(IDPlaylist, IDJudulPlaylist, IDMusik);
     }
 
     public static String generateID() {
@@ -39,12 +42,16 @@ public class PlaylistController {
         } else {
             IDPlaylist = "P" + intID;
         }
-        System.out.println(IDPlaylist);
         return IDPlaylist;
     }
 
     public static void main(String[] args) {
         getPlaylist();
-        displayPlaylist();
+        musikController.getMusik();
+        insertPlaylist("J001", "M003");
+        insertPlaylist("J005", "M004");
+        insertPlaylist("J003", "M002");
+        displayAllPlaylist();
+//        displayPlaylist("J001");
     }
 }
