@@ -11,11 +11,6 @@ public class MusikController {
 
     public static void getMusik() {
         linkedListMusik = service.getMusikService();
-        if (linkedListMusik != null) {
-            System.out.println("Berhasil menambahkan musik ke linked list");
-        } else {
-            System.out.println("Gagal menambahkan musik ke linked list");
-        }
     }
 
     public static void displayAllMusik() {

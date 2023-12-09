@@ -25,7 +25,7 @@ public class PlaylistController {
     }
 
     public static void insertPlaylist(String IDJudulPlaylist, String IDMusik) {
-        PlaylistModel playlistModel = new PlaylistModel(peekLastID(), IDJudulPlaylist, IDMusik, musikController.find(IDMusik).getJudulMusic());
+        PlaylistModel playlistModel = new PlaylistModel(peekLastID(), IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist() , IDMusik, musikController.find(IDMusik).getJudulMusic());
         getPlaylist();
         hashTable.insert(playlistModel);
         service.addPlaylistService(hashTable.peekLast().getIDPlaylist(), hashTable.peekLast().getIDJudulPlaylist(), hashTable.peekLast().getIDMusik());
@@ -53,5 +53,6 @@ public class PlaylistController {
         getPlaylist();
         musikController.getMusik();
         displayAllPlaylist();
+        displayPlaylist("J001");
     }
 }

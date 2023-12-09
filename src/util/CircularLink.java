@@ -4,7 +4,7 @@ import model.PlaylistModel;
 
 public class CircularLink {
 
-    private PlaylistModel playlist;
+    public PlaylistModel playlist;
     public CircularLink next;
     public CircularLink prev;
 

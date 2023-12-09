@@ -67,15 +67,15 @@ public class SortedCircularLinkList {
     }
 
     public void displayList(int index) {
-        System.out.print("Playlist " + (index + 1) + " : ");
         if (first != null) {
             CircularLink current = first;
+            System.out.print("Playlist " + current.playlist.getNamaPlaylist()+ " : ");
             do {
                 current.displayLink();
                 current = current.next;
             } while (current != first);
+            System.out.println("");
         }
-        System.out.println("");
     }
 
     public void displayList(int index, String namaPlaylist) {

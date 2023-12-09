@@ -50,7 +50,5 @@ public class JudulPlaylistController {
     public static void main(String[] args) {
         getJudulPlaylist();
         displayAllJudulPlaylist();
-        System.out.println(find("J001").getIDJudulPlaylist());
-        System.out.println(generateID(1));
     }
 }

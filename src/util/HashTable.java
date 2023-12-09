@@ -17,7 +17,7 @@ public class HashTable {
     }
 
     public void displayTable() {
-        System.out.println("Playlist : ");
+        System.out.println("Daftar Playlist Beserta Lagunya : ");
         for (int j = 0; j < size; j++) {
             hashArray[j].displayList(j);
         }

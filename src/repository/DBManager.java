@@ -19,11 +19,14 @@ public class DBManager {
     protected static HashTable getPlaylist(int size) {
         HashTable hashTable = new HashTable(size);
         try {
-            String sql = "SELECT p.id_playlist, p.id_judul_playlist, p.id_musik, m.judul_musik FROM tb_playlist p INNER JOIN tb_musik m ON p.id_musik = m.id_musik";
+            String sql = "SELECT p.id_playlist, p.id_judul_playlist, j.nama_playlist, p.id_musik, m.judul_musik FROM tb_playlist p "
+                    + "INNER JOIN tb_musik m ON p.id_musik = m.id_musik "
+                    + "INNER JOIN tb_judul_playlist j ON P.id_judul_playlist = j.id_judul_playlist";
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
             ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
-                playlistModel = new PlaylistModel(result.getString("id_playlist"), result.getString("id_judul_playlist"), result.getString("id_musik"), result.getString("judul_musik"));
+                playlistModel = new PlaylistModel(result.getString("id_playlist"), result.getString("id_judul_playlist"), 
+                        result.getString("nama_playlist"), result.getString("id_musik"), result.getString("judul_musik"));
                 hashTable.insert(playlistModel);
             }
             return hashTable;
@@ -98,7 +101,7 @@ public class DBManager {
         }
         return false;
     }
-    
+
     protected static boolean addMusik(String IDMusik, String judulMusik, String artis) {
         try {
             String sql = "INSERT INTO `tb_musik`(`id_musik`, `judul_musik`, `artis`) VALUES (?,?,?)";
@@ -115,7 +118,7 @@ public class DBManager {
         }
         return false;
     }
-    
+
     protected static boolean addPlaylist(String IDPlaylist, String IDJudulPlaylist, String IDMusik) {
         try {
             String sql = "INSERT INTO `tb_playlist`(`id_playlist`, `id_judul_playlist`, `id_musik`) VALUES (?,?,?)";
