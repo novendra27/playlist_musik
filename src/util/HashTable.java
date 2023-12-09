@@ -28,22 +28,26 @@ public class HashTable {
         hashArray[index].displayList(index, namaPlaylist);
     }
 
+    public int hashFuncChangeData(String IDJudulPlaylist) {
+        int idHash = Integer.parseInt(IDJudulPlaylist.substring(3)) - 1;
+        lastInsertIndex = idHash % size;
+        return idHash % size;
+    }
+    
     public int hashFunc(String IDJudulPlaylist) {
         int idHash = Integer.parseInt(IDJudulPlaylist.substring(3)) - 1;
-//        System.out.println(idHash);
-        lastInsertIndex = idHash % size;
         return idHash % size;
     }
 
     public void insert(PlaylistModel playlist) {
         CircularLink theLink = new CircularLink(playlist);
         String IDJudulPlaylist = playlist.getIDJudulPlaylist();
-        int hashVal = hashFunc(IDJudulPlaylist);
+        int hashVal = hashFuncChangeData(IDJudulPlaylist);
         hashArray[hashVal].insert(theLink);
     }
 
     public void delete(String IDJudulPlaylist) {
-        int hashVal = hashFunc(IDJudulPlaylist);
+        int hashVal = hashFuncChangeData(IDJudulPlaylist);
         hashArray[hashVal].delete(IDJudulPlaylist);
     }
 
@@ -66,5 +70,20 @@ public class HashTable {
             return hashArray[lastInsertIndex].peekLast();
         }
         return null;
+    }
+    
+    public void play(String IDJudulPlaylist, String IDMusik) {
+        int hashVal = hashFunc(IDJudulPlaylist);
+        hashArray[hashVal].play(IDMusik);
+    }
+
+    public void playNext(String IDJudulPlaylist, String IDMusik) {
+        int hashVal = hashFunc(IDJudulPlaylist);
+        hashArray[hashVal].playNext(IDMusik);
+    }
+
+    public void playPrev(String IDJudulPlaylist, String IDMusik) {
+        int hashVal = hashFunc(IDJudulPlaylist);
+        hashArray[hashVal].playPrev(IDMusik);
     }
 }

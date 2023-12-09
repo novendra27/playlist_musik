@@ -18,25 +18,26 @@ public class PlaylistController {
     public static void displayAllPlaylist() {
         hashTable.displayTable();
     }
-    
+
+    //Display satu playlist sesuai parameter
     public static void displayPlaylist(String IDJudulPlaylist) {
         JPController.getJudulPlaylist();
         hashTable.displayTable(IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist());
     }
 
     public static void insertPlaylist(String IDJudulPlaylist, String IDMusik) {
-        PlaylistModel playlistModel = new PlaylistModel(peekLastID(), IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist() , IDMusik, musikController.find(IDMusik).getJudulMusic());
+        PlaylistModel playlistModel = new PlaylistModel(peekLastID(), IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist(), IDMusik, musikController.find(IDMusik).getJudulMusic());
         getPlaylist();
         hashTable.insert(playlistModel);
         service.addPlaylistService(hashTable.peekLast().getIDPlaylist(), hashTable.peekLast().getIDJudulPlaylist(), hashTable.peekLast().getIDMusik());
     }
- 
-    public static String peekLastID(){
+
+    public static String peekLastID() {
         String IDPlaylist = hashTable.peekLast().getIDPlaylist();
         int intID = Integer.parseInt(IDPlaylist.substring(3)) + 1;
         return generateID(intID);
     }
-    
+
     public static String generateID(int intID) {
         String IDPlaylist;
         if (intID < 10) {
@@ -49,10 +50,25 @@ public class PlaylistController {
         return IDPlaylist;
     }
 
+    public static void play(String IDJudulPlaylist, String IDMusik) {
+        hashTable.play(IDJudulPlaylist, IDMusik);
+    }
+
+    public static void playNext(String IDJudulPlaylist, String IDMusik) {
+        hashTable.playNext(IDJudulPlaylist, IDMusik);
+    }
+
+    public static void playPrev(String IDJudulPlaylist, String IDMusik) {
+        hashTable.playPrev(IDJudulPlaylist, IDMusik);
+    }
+
     public static void main(String[] args) {
         getPlaylist();
         musikController.getMusik();
-        displayAllPlaylist();
+//        displayAllPlaylist();
         displayPlaylist("J001");
+        play("J001", "M001");
+        playNext("J001", "M001");
+        playPrev("J001", "M001");
     }
 }

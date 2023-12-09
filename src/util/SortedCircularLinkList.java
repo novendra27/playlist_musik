@@ -65,6 +65,18 @@ public class SortedCircularLinkList {
 
         return null;
     }
+    
+    public CircularLink findMusik(String IDMusik) {
+        CircularLink current = first;
+        do {
+            if (current.getPlaylist().getIDMusik().equals(IDMusik)) {
+                return current;
+            }
+            current = current.next;
+        } while (current != first);
+
+        return null;
+    }
 
     public void displayList(int index) {
         if (first != null) {
@@ -99,5 +111,37 @@ public class SortedCircularLinkList {
             return null;
         }
         return first.getPlaylist();
+    }
+    
+    public void play(String IDMusik) {
+        CircularLink current = findMusik(IDMusik);
+        if (current != null) {
+            current.displayLink();
+            System.out.println(" is now playing.");
+        } else {
+            System.out.println("Music not found.");
+        }
+    }
+
+    public void playNext(String IDMusik) {
+        CircularLink current = findMusik(IDMusik);
+        if (current != null) {
+            current = current.next;
+            current.displayLink();
+            System.out.println(" is now playing.");
+        } else {
+            System.out.println("Music not found.");
+        }
+    }
+
+    public void playPrev(String IDMusik) {
+        CircularLink current = findMusik(IDMusik);
+        if (current != null) {
+            current = current.prev;
+            current.displayLink();
+            System.out.println(" is now playing.");
+        } else {
+            System.out.println("Music not found.");
+        }
     }
 }
