@@ -6,11 +6,15 @@ import util.HashTable;
 
 public class PlaylistController {
 
-    private static DBService service = new DBService();
+    private static DBService service;
     private static HashTable hashTable = new HashTable(service.getSizePlaylistService());
-    private static JudulPlaylistController JPController = new JudulPlaylistController();
-    private static MusikController musikController = new MusikController();
+    private static JudulPlaylistController JPController = new JudulPlaylistController(service);
+    private static MusikController musikController = new MusikController(service);
 
+    public PlaylistController(DBService service) {
+        this.service = service;
+    }
+    
     public static void getPlaylist() {
         hashTable = service.getPlaylistService();
     }

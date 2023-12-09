@@ -6,9 +6,14 @@ import util.LinkedListMusik;
 
 public class MusikController {
 
-    private static DBService service = new DBService();
+    private static DBService service;
     private static LinkedListMusik linkedListMusik = new LinkedListMusik();
 
+    public MusikController (DBService service) {
+        this.service = service;
+        getMusik();
+    }
+    
     public static void getMusik() {
         linkedListMusik = service.getMusikService();
     }
@@ -24,7 +29,7 @@ public class MusikController {
     }
 
     public static String peekLastID() {
-        String IDMusik = linkedListMusik.peekLast().getJudulMusic();
+        String IDMusik = linkedListMusik.peekLast().getIDMusic();
         int intID = Integer.parseInt(IDMusik.substring(3)) + 1;
         return generateID(intID);
     }
@@ -56,7 +61,8 @@ public class MusikController {
     public static void main(String[] args) {
         getMusik();
         displayAllMusik();
-        delete("M006");
-        displayAllMusik();
+        insertMusik("Judul-Judulan", "Om PMR");
+//        delete("M006");
+//        displayAllMusik();
     }
 }

@@ -90,7 +90,7 @@ public class SortedCircularLinkList {
         }
     }
 
-    public void displayList(int index, String namaPlaylist) {
+    public void displayAllList(int index, String namaPlaylist) {
         System.out.print("Playlist " + namaPlaylist + " : ");
         if (first != null) {
             CircularLink current = first;
@@ -117,9 +117,9 @@ public class SortedCircularLinkList {
         CircularLink current = findMusik(IDMusik);
         if (current != null) {
             current.displayLink();
-            System.out.println(" is now playing.");
+            System.out.println(" sedang diputar.");
         } else {
-            System.out.println("Music not found.");
+            System.out.println("Musik tidak ada di playlist.");
         }
     }
 
@@ -128,9 +128,9 @@ public class SortedCircularLinkList {
         if (current != null) {
             current = current.next;
             current.displayLink();
-            System.out.println(" is now playing.");
+            System.out.println(" sedang diputar.");
         } else {
-            System.out.println("Music not found.");
+            System.out.println("Musik tidak ada di palylist.");
         }
     }
 
@@ -139,9 +139,9 @@ public class SortedCircularLinkList {
         if (current != null) {
             current = current.prev;
             current.displayLink();
-            System.out.println(" is now playing.");
+            System.out.println(" sedang diputar.");
         } else {
-            System.out.println("Music not found.");
+            System.out.println("Musik tidak ada di playlist.");
         }
     }
 }

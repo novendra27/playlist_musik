@@ -6,10 +6,15 @@ import util.LinkedListJP;
 
 public class JudulPlaylistController {
 
-    private static DBService service = new DBService();
+    private static DBService service;
     private static LinkedListJP linkedListJP = new LinkedListJP();
-    private static PlaylistController playlistController = new PlaylistController();
+    private static PlaylistController playlistController = new PlaylistController(service);
 
+    public JudulPlaylistController(DBService service) {
+        this.service = service;
+        getJudulPlaylist();
+    }
+    
     public static void getJudulPlaylist() {
         linkedListJP = service.getJudulPlaylistService();
     }
