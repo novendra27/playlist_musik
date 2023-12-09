@@ -46,9 +46,19 @@ public class JudulPlaylistController {
     public static JudulPlaylistModel find(String IDJudulPlaylist){
         return linkedListJP.find(IDJudulPlaylist);
     }
+    
+    public static void delete(String IDJudulPlaylist){        
+        JudulPlaylistModel judulPlaylistModel = new JudulPlaylistModel(find(IDJudulPlaylist).getIDJudulPlaylist(), find(IDJudulPlaylist).getNamaPlaylist());
+        if ( judulPlaylistModel != null) {
+            linkedListJP.delete(IDJudulPlaylist);
+            service.deleteJudulPlaylistService(IDJudulPlaylist);
+        } 
+    }
 
     public static void main(String[] args) {
         getJudulPlaylist();
+        displayAllJudulPlaylist();
+        delete("J006");
         displayAllJudulPlaylist();
     }
 }

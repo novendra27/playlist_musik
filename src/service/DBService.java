@@ -59,4 +59,25 @@ public class DBService extends DBManager {
         }
         return false;
     }
+    
+    public static boolean deleteJudulPlaylistService(String IDJudulPlaylist) {
+        if (deleteJudulPlaylist(IDJudulPlaylist)) {
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean deleteMusikService(String IDMusik) {
+        if (deleteMusik(IDMusik)) {
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean deletePlaylistService(String IDPlaylist) {
+        if (deletePlaylist(IDPlaylist)) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -1,6 +1,5 @@
 package util;
 
-import model.JudulPlaylistModel;
 import model.MusikModel;
 
 public class LinkedListMusik {
@@ -13,12 +12,6 @@ public class LinkedListMusik {
 
     public boolean isEmpty() {
         return (first == null);
-    }
-
-    public NodeMusik deleteFirst() {
-        NodeMusik temp = first;
-        first = first.next;
-        return temp;
     }
 
     public void displayList() {
@@ -46,26 +39,6 @@ public class LinkedListMusik {
         current.next = newNodeMusik;
     }
 
-    public NodeMusik deleteLast() {
-        if (isEmpty()) {
-            return null;
-        }
-        if (first.next == null) {
-            NodeMusik temp = first;
-            first = null;
-            return temp;
-        }
-        NodeMusik current = first;
-        NodeMusik previous = null;
-        while (current.next != null) {
-            previous = current;
-            current = current.next;
-        }
-        previous.next = null;
-
-        return current;
-    }
-
     public MusikModel peekLast() {
         if (isEmpty()) {
             return null;
@@ -85,6 +58,24 @@ public class LinkedListMusik {
             } else {
                 current = current.next;
             }
+        }
+        return current.Data;
+    }
+    
+    public MusikModel delete(String IDMusik) {
+        NodeMusik current = first;
+        NodeMusik previous = null;
+        while (current != null && !current.Data.getIDMusic().equals(IDMusik)) {
+            previous = current;
+            current = current.next;
+        }
+        if (current == null) {
+            return null;
+        }
+        if (previous == null) {
+            first = current.next; 
+        } else {
+            previous.next = current.next;
         }
         return current.Data;
     }

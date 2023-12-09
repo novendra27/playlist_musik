@@ -42,7 +42,7 @@ public class SortedCircularLinkList {
 
     public void delete(String IDPlaylist) {
         CircularLink current = first;
-        while (current != null && !IDPlaylist.equals(current.getPlaylist().getIDJudulPlaylist())) {
+        while (current != null && !IDPlaylist.equals(current.getPlaylist().getIDPlaylist())) {
             current = current.next;
         }
         if (current != null) {
@@ -54,11 +54,11 @@ public class SortedCircularLinkList {
         }
     }
 
-    public CircularLink find(String IDPlaylist) {
+    public PlaylistModel find(String IDPlaylist) {
         CircularLink current = first;
         do {
-            if (current.getPlaylist().getIDJudulPlaylist().equals(IDPlaylist)) {
-                return current;
+            if (current.getPlaylist().getIDPlaylist().equals(IDPlaylist)) {
+                return current.playlist;
             }
             current = current.next;
         } while (current != first);

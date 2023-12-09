@@ -44,9 +44,19 @@ public class MusikController {
     public static MusikModel find(String IDMusik){
         return linkedListMusik.find(IDMusik);
     }
+    
+    public static void delete(String IDMusik){        
+        MusikModel musikModel = new MusikModel(find(IDMusik).getIDMusic(), find(IDMusik).getJudulMusic(), find(IDMusik).getArtis());
+        if ( musikModel != null) {
+            linkedListMusik.delete(IDMusik);
+            service.deleteMusikService(IDMusik);
+        } 
+    }
 
     public static void main(String[] args) {
         getMusik();
+        displayAllMusik();
+        delete("M006");
         displayAllMusik();
     }
 }

@@ -135,4 +135,49 @@ public class DBManager {
         }
         return false;
     }
+    
+    protected static boolean deleteJudulPlaylist(String IDJudulPlaylist) {
+        try {
+            String sql = "DELETE FROM `tb_judul_playlist` WHERE id_judul_playlist = ?";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, IDJudulPlaylist);
+            int result = preparedStatement.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    protected static boolean deleteMusik(String IDMusik) {
+        try {
+            String sql = "DELETE FROM `tb_musik` WHERE id_musik = ?";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, IDMusik);
+            int result = preparedStatement.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    protected static boolean deletePlaylist(String IDPlaylist) {
+        try {
+            String sql = "DELETE FROM `tb_playlist` WHERE id_playlist = ?";
+            PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, IDPlaylist);
+            int result = preparedStatement.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

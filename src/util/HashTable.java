@@ -46,14 +46,14 @@ public class HashTable {
         hashArray[hashVal].insert(theLink);
     }
 
-    public void delete(String IDJudulPlaylist) {
-        int hashVal = hashFuncChangeData(IDJudulPlaylist);
-        hashArray[hashVal].delete(IDJudulPlaylist);
+    public void delete(String IDPlaylist, String IDJudulPlaylist) {
+        int hashVal = hashFunc(IDJudulPlaylist);
+        hashArray[hashVal].delete(IDPlaylist);
     }
 
-    public CircularLink find(String IDJudulPlaylist) {
+    public PlaylistModel find(String IDPlaylist, String IDJudulPlaylist) {
         int hashVal = hashFunc(IDJudulPlaylist);
-        return hashArray[hashVal].find(IDJudulPlaylist);
+        return hashArray[hashVal].find(IDPlaylist);
     }
 
     public boolean isEmpty() {

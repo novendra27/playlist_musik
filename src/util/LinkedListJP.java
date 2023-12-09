@@ -14,12 +14,6 @@ public class LinkedListJP {
         return (first == null);
     }
 
-    public NodeJP deleteFirst() {
-        NodeJP temp = first;
-        first = first.next;
-        return temp;
-    }
-
     public JudulPlaylistModel find(String key) {
         NodeJP current = first;
         while (current != null) {
@@ -57,26 +51,6 @@ public class LinkedListJP {
         current.next = newNodeJP;
     }
 
-    public NodeJP deleteLast() {
-        if (isEmpty()) {
-            return null;
-        }
-        if (first.next == null) {
-            NodeJP temp = first;
-            first = null;
-            return temp;
-        }
-        NodeJP current = first;
-        NodeJP previous = null;
-        while (current.next != null) {
-            previous = current;
-            current = current.next;
-        }
-        previous.next = null;
-
-        return current;
-    }
-
     public JudulPlaylistModel peekLast() {
         if (isEmpty()) {
             return null;
@@ -84,6 +58,24 @@ public class LinkedListJP {
         NodeJP current = first;
         while (current.next != null) {
             current = current.next;
+        }
+        return current.Data;
+    }
+    
+    public JudulPlaylistModel delete(String IDJudulPlaylist) {
+        NodeJP current = first;
+        NodeJP previous = null;
+        while (current != null && !current.Data.getIDJudulPlaylist().equals(IDJudulPlaylist)) {
+            previous = current;
+            current = current.next;
+        }
+        if (current == null) {
+            return null;
+        }
+        if (previous == null) {
+            first = current.next; 
+        } else {
+            previous.next = current.next;
         }
         return current.Data;
     }

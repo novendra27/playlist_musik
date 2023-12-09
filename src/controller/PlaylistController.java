@@ -25,9 +25,9 @@ public class PlaylistController {
         hashTable.displayTable(IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist());
     }
 
+    //Menambah musik ke playlist
     public static void insertPlaylist(String IDJudulPlaylist, String IDMusik) {
         PlaylistModel playlistModel = new PlaylistModel(peekLastID(), IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist(), IDMusik, musikController.find(IDMusik).getJudulMusic());
-        getPlaylist();
         hashTable.insert(playlistModel);
         service.addPlaylistService(hashTable.peekLast().getIDPlaylist(), hashTable.peekLast().getIDJudulPlaylist(), hashTable.peekLast().getIDMusik());
     }
@@ -61,14 +61,26 @@ public class PlaylistController {
     public static void playPrev(String IDJudulPlaylist, String IDMusik) {
         hashTable.playPrev(IDJudulPlaylist, IDMusik);
     }
+    
+    //Mencari playlistModel
+    public static PlaylistModel find(String IDPlaylist, String IDJudulPlaylist){
+        return hashTable.find(IDPlaylist, IDJudulPlaylist);
+    }
+    
+    public static void delete(String IDPlaylist, String IDJudulPlaylist){    
+        String IDPlaylistChecked = find(IDPlaylist, IDJudulPlaylist).getIDPlaylist();
+        String IDJudulPlaylistChecked = find(IDPlaylist, IDJudulPlaylist).getIDJudulPlaylist();
+        if ( IDPlaylistChecked != null && IDJudulPlaylistChecked != null) {
+            hashTable.delete(IDPlaylist, IDJudulPlaylist);
+            service.deletePlaylistService(IDPlaylist);
+        } 
+    }
 
     public static void main(String[] args) {
         getPlaylist();
         musikController.getMusik();
-//        displayAllPlaylist();
-        displayPlaylist("J001");
-        play("J001", "M001");
-        playNext("J001", "M001");
-        playPrev("J001", "M001");
+        displayAllPlaylist();
+        delete("P007", "J001");
+        displayAllPlaylist();
     }
 }
