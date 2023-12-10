@@ -1,5 +1,6 @@
 package main;
 
+<<<<<<< HEAD
 import controller.JudulPlaylistController;
 import controller.MusikController;
 import controller.PlaylistController;
@@ -16,5 +17,10 @@ public class Main {
         AppView run = new AppView(jPControl, mControl, pControl);
 
         run.init();
+=======
+public class Main {
+    public static void main(String[] args) {
+        
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
     }
 }

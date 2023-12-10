@@ -6,6 +6,7 @@ import util.LinkedListJP;
 
 public class JudulPlaylistController {
 
+<<<<<<< HEAD
     private static DBService service;
     private static LinkedListJP linkedListJP = new LinkedListJP();
     private static PlaylistController playlistController = new PlaylistController(service);
@@ -15,6 +16,12 @@ public class JudulPlaylistController {
         getJudulPlaylist();
     }
     
+=======
+    private static DBService service = new DBService();
+    private static LinkedListJP linkedListJP = new LinkedListJP();
+    private static PlaylistController playlistController = new PlaylistController();
+
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
     public static void getJudulPlaylist() {
         linkedListJP = service.getJudulPlaylistService();
     }

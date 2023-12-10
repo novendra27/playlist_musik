@@ -90,7 +90,11 @@ public class SortedCircularLinkList {
         }
     }
 
+<<<<<<< HEAD
     public void displayAllList(int index, String namaPlaylist) {
+=======
+    public void displayList(int index, String namaPlaylist) {
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
         System.out.print("Playlist " + namaPlaylist + " : ");
         if (first != null) {
             CircularLink current = first;
@@ -117,9 +121,15 @@ public class SortedCircularLinkList {
         CircularLink current = findMusik(IDMusik);
         if (current != null) {
             current.displayLink();
+<<<<<<< HEAD
             System.out.println(" sedang diputar.");
         } else {
             System.out.println("Musik tidak ada di playlist.");
+=======
+            System.out.println(" is now playing.");
+        } else {
+            System.out.println("Music not found.");
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
         }
     }
 
@@ -128,9 +138,15 @@ public class SortedCircularLinkList {
         if (current != null) {
             current = current.next;
             current.displayLink();
+<<<<<<< HEAD
             System.out.println(" sedang diputar.");
         } else {
             System.out.println("Musik tidak ada di palylist.");
+=======
+            System.out.println(" is now playing.");
+        } else {
+            System.out.println("Music not found.");
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
         }
     }
 
@@ -139,9 +155,15 @@ public class SortedCircularLinkList {
         if (current != null) {
             current = current.prev;
             current.displayLink();
+<<<<<<< HEAD
             System.out.println(" sedang diputar.");
         } else {
             System.out.println("Musik tidak ada di playlist.");
+=======
+            System.out.println(" is now playing.");
+        } else {
+            System.out.println("Music not found.");
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
         }
     }
 }

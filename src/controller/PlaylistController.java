@@ -6,6 +6,7 @@ import util.HashTable;
 
 public class PlaylistController {
 
+<<<<<<< HEAD
     private static DBService service;
     private static HashTable hashTable = new HashTable(service.getSizePlaylistService());
     private static JudulPlaylistController JPController = new JudulPlaylistController(service);
@@ -15,6 +16,13 @@ public class PlaylistController {
         this.service = service;
     }
     
+=======
+    private static DBService service = new DBService();
+    private static HashTable hashTable = new HashTable(service.getSizePlaylistService());
+    private static JudulPlaylistController JPController = new JudulPlaylistController();
+    private static MusikController musikController = new MusikController();
+
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
     public static void getPlaylist() {
         hashTable = service.getPlaylistService();
     }
@@ -29,8 +37,13 @@ public class PlaylistController {
         hashTable.displayTable(IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist());
     }
 
+<<<<<<< HEAD
     // Menambah musik ke playlist
     public static void insertMusicToPlaylist(String IDJudulPlaylist, String IDMusik) {
+=======
+    //Menambah musik ke playlist
+    public static void insertPlaylist(String IDJudulPlaylist, String IDMusik) {
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
         PlaylistModel playlistModel = new PlaylistModel(peekLastID(), IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist(), IDMusik, musikController.find(IDMusik).getJudulMusic());
         hashTable.insert(playlistModel);
         service.addPlaylistService(hashTable.peekLast().getIDPlaylist(), hashTable.peekLast().getIDJudulPlaylist(), hashTable.peekLast().getIDMusik());
@@ -71,8 +84,12 @@ public class PlaylistController {
         return hashTable.find(IDPlaylist, IDJudulPlaylist);
     }
     
+<<<<<<< HEAD
     // Menghapus musik dari playlist
     public static void removeMusicFromPlaylist(String IDPlaylist, String IDJudulPlaylist){    
+=======
+    public static void delete(String IDPlaylist, String IDJudulPlaylist){    
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
         String IDPlaylistChecked = find(IDPlaylist, IDJudulPlaylist).getIDPlaylist();
         String IDJudulPlaylistChecked = find(IDPlaylist, IDJudulPlaylist).getIDJudulPlaylist();
         if ( IDPlaylistChecked != null && IDJudulPlaylistChecked != null) {
@@ -85,7 +102,11 @@ public class PlaylistController {
         getPlaylist();
         musikController.getMusik();
         displayAllPlaylist();
+<<<<<<< HEAD
         insertMusicToPlaylist("J005", "M006");
+=======
+        delete("P007", "J001");
+>>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
         displayAllPlaylist();
     }
 }
