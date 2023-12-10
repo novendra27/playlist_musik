@@ -18,19 +18,23 @@ public class AppView {
         this.pControl = pControl;
     }
 
-    private void createPlaylst() {
+    private void createPlaylist() {
         System.out.print("Nama Playlist: ");
         String playlistName = input.nextLine();
 
         jPControl.insertJudulPlaylist(playlistName);
     }
 
-    private void displayPlaylist() {
+    private void displayAllJudulPlaylist() {
         jPControl.displayAllJudulPlaylist();
     }
-
+    
+    private void displayOnePlaylist(String IDJudulPlaylist) {
+        pControl.displayPlaylist(IDJudulPlaylist);
+    }
+    
     private void deletePlaylist() {
-        displayPlaylist();
+        displayAllJudulPlaylist();
 
         System.out.print("Hapus Playlist (Nomor): ");
         String playlistKey = jPControl.generateID(Integer.parseInt(input.nextLine()));
@@ -61,26 +65,27 @@ public class AppView {
     }
     
     private void addMusicToPlaylist() {
-        displayPlaylist();
+        displayAllJudulPlaylist();
         System.out.print("Pilih PLaylist: ");
-        String choosenPlaylist = pControl.generateID(Integer.parseInt(input.nextLine()));
+        String choosenPlaylist = jPControl.generateID(Integer.parseInt(input.nextLine()));
         
         displayMusic();
         System.out.print("Pilih Musik: ");
-        String choosenMusic = pControl.generateID(Integer.parseInt(input.nextLine()));
+        String choosenMusic = mControl.generateID(Integer.parseInt(input.nextLine()));
         
         pControl.insertMusicToPlaylist(choosenPlaylist, choosenMusic);
         pControl.displayAllPlaylist();
     }
     
     private void removeMusicFromPlaylist() {
-        displayPlaylist();
+        displayAllJudulPlaylist();
         System.out.print("Pilih PLaylist: ");
-        String choosenPlaylist = pControl.generateID(Integer.parseInt(input.nextLine()));
+        String choosenPlaylist = jPControl.generateID(Integer.parseInt(input.nextLine()));
         
+        pControl.displayPlaylist(choosenPlaylist);
         displayMusic();
         System.out.print("Pilih Musik: ");
-        String choosenMusic = pControl.generateID(Integer.parseInt(input.nextLine()));
+        String choosenMusic = mControl.generateID(Integer.parseInt(input.nextLine()));
         
         pControl.removeMusicFromPlaylist(choosenPlaylist, choosenMusic);
         pControl.displayAllPlaylist();
@@ -122,14 +127,14 @@ public class AppView {
             switch (userChoice) {
                 case 1: // only for create playlist
                     try {
-                        createPlaylst();
+                        createPlaylist();
                         System.out.println("Playlist berhasil dibuat!");
                     } catch (Exception e) {
                     System.out.println(e.getMessage());
                     }
                     break;
                 case 2: // only for display playlist
-                    displayPlaylist();
+                    displayAllJudulPlaylist();
                     
                     int playlistOption = playlistMenu();
                     
@@ -149,6 +154,7 @@ public class AppView {
                             init();
                             break;
                     }
+                    break;
                 case 3: // only for delete playlist
                     try {
                         deletePlaylist();
