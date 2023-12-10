@@ -25,7 +25,7 @@ public class MusikModel {
     }
 
     public String displayMusik() {
-        return JudulMusik + " by " + Artis;
+        return JudulMusik + " - " + Artis;
     }
 
 }
