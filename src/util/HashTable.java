@@ -25,11 +25,7 @@ public class HashTable {
 
     public void displayTable(String IDJudulPlaylist, String namaPlaylist) {
         int index = hashFunc(IDJudulPlaylist);
-<<<<<<< HEAD
         hashArray[index].displayAllList(index, namaPlaylist);
-=======
-        hashArray[index].displayList(index, namaPlaylist);
->>>>>>> 4666e00061e5a1db7bb5f4578b7c57089f25b5aa
     }
 
     public int hashFuncChangeData(String IDJudulPlaylist) {
