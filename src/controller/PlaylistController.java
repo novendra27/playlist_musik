@@ -13,6 +13,7 @@ public class PlaylistController {
 
     public PlaylistController(DBService service) {
         this.service = service;
+        getPlaylist();
     }
     
     public static void getPlaylist() {
@@ -84,8 +85,9 @@ public class PlaylistController {
     public static void main(String[] args) {
         getPlaylist();
         musikController.getMusik();
+        JPController.getJudulPlaylist();
         displayAllPlaylist();
-        insertMusicToPlaylist("J005", "M006");
-        displayAllPlaylist();
+        System.out.println("=========");
+        displayPlaylist("J001");
     }
 }
