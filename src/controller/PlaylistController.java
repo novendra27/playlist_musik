@@ -29,8 +29,8 @@ public class PlaylistController {
         hashTable.displayTable(IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist());
     }
 
-    //Menambah musik ke playlist
-    public static void insertPlaylist(String IDJudulPlaylist, String IDMusik) {
+    // Menambah musik ke playlist
+    public static void insertMusicToPlaylist(String IDJudulPlaylist, String IDMusik) {
         PlaylistModel playlistModel = new PlaylistModel(peekLastID(), IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist(), IDMusik, musikController.find(IDMusik).getJudulMusic());
         hashTable.insert(playlistModel);
         service.addPlaylistService(hashTable.peekLast().getIDPlaylist(), hashTable.peekLast().getIDJudulPlaylist(), hashTable.peekLast().getIDMusik());
@@ -71,7 +71,8 @@ public class PlaylistController {
         return hashTable.find(IDPlaylist, IDJudulPlaylist);
     }
     
-    public static void delete(String IDPlaylist, String IDJudulPlaylist){    
+    // Menghapus musik dari playlist
+    public static void removeMusicFromPlaylist(String IDPlaylist, String IDJudulPlaylist){    
         String IDPlaylistChecked = find(IDPlaylist, IDJudulPlaylist).getIDPlaylist();
         String IDJudulPlaylistChecked = find(IDPlaylist, IDJudulPlaylist).getIDJudulPlaylist();
         if ( IDPlaylistChecked != null && IDJudulPlaylistChecked != null) {
@@ -84,7 +85,7 @@ public class PlaylistController {
         getPlaylist();
         musikController.getMusik();
         displayAllPlaylist();
-        delete("P007", "J001");
+        insertMusicToPlaylist("J005", "M006");
         displayAllPlaylist();
     }
 }
