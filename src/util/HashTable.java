@@ -7,6 +7,7 @@ public class HashTable {
     private SortedCircularLinkList[] hashArray;
     private int size;
     private int lastInsertIndex;
+    private int lastPlayIndex;
 
     public HashTable(int size) {
         this.size = size;
@@ -72,18 +73,36 @@ public class HashTable {
         return null;
     }
     
-    public void play(String IDJudulPlaylist, String IDMusik) {
+    public void play(String IDJudulPlaylist) {
         int hashVal = hashFunc(IDJudulPlaylist);
+        String IDMusik = hashArray[hashVal].findFirstIDMusik();
+        lastPlayIndex = Integer.parseInt(IDMusik.substring(3));
         hashArray[hashVal].play(IDMusik);
     }
 
-    public void playNext(String IDJudulPlaylist, String IDMusik) {
+    public void playNext(String IDJudulPlaylist) {
         int hashVal = hashFunc(IDJudulPlaylist);
-        hashArray[hashVal].playNext(IDMusik);
+        hashArray[hashVal].playNext(generateIDMusik(lastPlayIndex));
     }
 
-    public void playPrev(String IDJudulPlaylist, String IDMusik) {
+    public void playPrev(String IDJudulPlaylist) {
         int hashVal = hashFunc(IDJudulPlaylist);
-        hashArray[hashVal].playPrev(IDMusik);
+        hashArray[hashVal].playPrev(generateIDMusik(lastPlayIndex));
+    }
+    
+    public void stopPlay() {
+        lastPlayIndex = 0;
+    }
+    
+    public static String generateIDMusik(int intID) {
+        String IDMusik;
+        if (intID < 10) {
+            IDMusik = "M00" + intID;
+        } else if (intID < 100) {
+            IDMusik = "M0" + intID;
+        } else {
+            IDMusik = "M" + intID;
+        }
+        return IDMusik;
     }
 }
