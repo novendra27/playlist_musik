@@ -84,7 +84,6 @@ public class HashTable {
     }
 
     public void play(String IDJudulPlaylist) {
-        System.out.print("Now Playing: ");
         int hashVal = hashFunc(IDJudulPlaylist);
         String IDMusik = hashArray[hashVal].findFirstIDMusik();
         lastPlayIndex = Integer.parseInt(IDMusik.substring(3));
