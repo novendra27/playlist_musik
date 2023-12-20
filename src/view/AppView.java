@@ -87,7 +87,7 @@ public class AppView {
         System.out.print("Pilih Musik: ");
         String choosenMusic = mControl.generateID(Integer.parseInt(input.nextLine()));
         
-        pControl.removeMusicFromPlaylist(choosenPlaylist, choosenMusic);
+        pControl.removeMusicFromPlaylist(choosenMusic, choosenPlaylist);
         pControl.displayAllPlaylist();
     }
 

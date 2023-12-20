@@ -66,6 +66,18 @@ public class SortedCircularLinkList {
         return null;
     }
     
+    public PlaylistModel findMusikInPlaylist(String IDMusik) {
+        CircularLink current = first;
+        do {
+            if (current.getPlaylist().getIDMusik().equals(IDMusik)) {
+                return current.playlist;
+            }
+            current = current.next;
+        } while (current != first);
+
+        return null;
+    }
+    
     public CircularLink findMusik(String IDMusik) {
         CircularLink current = first;
         do {

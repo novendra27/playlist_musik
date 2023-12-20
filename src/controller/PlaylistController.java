@@ -76,12 +76,16 @@ public class PlaylistController {
         return hashTable.find(IDPlaylist, IDJudulPlaylist);
     }
     
+    public static PlaylistModel findMusikInPlaylist(String IDMusik, String IDJudulPlaylist){
+        return hashTable.findMusikInPlaylist(IDMusik, IDJudulPlaylist);
+    }
+    
     // Menghapus musik dari playlist
-    public static void removeMusicFromPlaylist(String IDPlaylist, String IDJudulPlaylist){
-        String IDPlaylistChecked = find(IDPlaylist, IDJudulPlaylist).getIDPlaylist();
-        String IDJudulPlaylistChecked = find(IDPlaylist, IDJudulPlaylist).getIDJudulPlaylist();
-        if ( IDPlaylistChecked != null && IDJudulPlaylistChecked != null) {
-            hashTable.delete(IDPlaylist, IDJudulPlaylist);
+    public static void removeMusicFromPlaylist(String IDMusik, String IDJudulPlaylist){
+        String IDPlaylist = findMusikInPlaylist(IDMusik, IDJudulPlaylist).getIDPlaylist();
+        String IDJudulPlaylistChecked = findMusikInPlaylist(IDMusik, IDJudulPlaylist).getIDJudulPlaylist();
+        if ( IDPlaylist != null && IDJudulPlaylistChecked != null) {
+            hashTable.delete(IDPlaylist, IDJudulPlaylistChecked);
             service.deletePlaylistService(IDPlaylist);
         } 
     }

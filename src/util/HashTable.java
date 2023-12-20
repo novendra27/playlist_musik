@@ -56,6 +56,11 @@ public class HashTable {
         int hashVal = hashFunc(IDJudulPlaylist);
         return hashArray[hashVal].find(IDPlaylist);
     }
+    
+    public PlaylistModel findMusikInPlaylist(String IDMusik, String IDJudulPlaylist) {
+        int hashVal = hashFunc(IDJudulPlaylist);
+        return hashArray[hashVal].findMusikInPlaylist(IDMusik);
+    }
 
     public boolean isEmpty() {
         for (int i = 0; i < size; i++) {
