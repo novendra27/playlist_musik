@@ -8,6 +8,7 @@ public class HashTable {
     private int size;
     private int lastInsertIndex;
     private int lastPlayIndex;
+    private int hashPlayIndex;
 
     public HashTable(int size) {
         this.size = size;
@@ -79,20 +80,20 @@ public class HashTable {
     }
     
     public void play(String IDJudulPlaylist) {
-        int hashVal = hashFunc(IDJudulPlaylist);
-        String IDMusik = hashArray[hashVal].findFirstIDMusik();
+        hashPlayIndex = hashFunc(IDJudulPlaylist);
+        String IDMusik = hashArray[hashPlayIndex].findFirstIDMusik();
         lastPlayIndex = Integer.parseInt(IDMusik.substring(3));
-        hashArray[hashVal].play(IDMusik);
+        hashArray[hashPlayIndex].play(IDMusik);
     }
 
-    public void playNext(String IDJudulPlaylist) {
-        int hashVal = hashFunc(IDJudulPlaylist);
-        hashArray[hashVal].playNext(generateIDMusik(lastPlayIndex));
+    public void playNext() {
+        String temp = hashArray[hashPlayIndex].playNext(generateIDMusik(lastPlayIndex));
+        lastPlayIndex = Integer.parseInt(temp.substring(3));
     }
 
-    public void playPrev(String IDJudulPlaylist) {
-        int hashVal = hashFunc(IDJudulPlaylist);
-        hashArray[hashVal].playPrev(generateIDMusik(lastPlayIndex));
+    public void playPrev() {
+        String temp = hashArray[hashPlayIndex].playPrev(generateIDMusik(lastPlayIndex));
+        lastPlayIndex = Integer.parseInt(temp.substring(3));
     }
     
     public void stopPlay() {

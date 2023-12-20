@@ -59,12 +59,12 @@ public class PlaylistController {
         hashTable.play(IDJudulPlaylist);
     }
 
-    public static void playNext(String IDJudulPlaylist) {
-        hashTable.playNext(IDJudulPlaylist);
+    public static void playNext() {
+        hashTable.playNext();
     }
 
-    public static void playPrev(String IDJudulPlaylist) {
-        hashTable.playPrev(IDJudulPlaylist);
+    public static void playPrev() {
+        hashTable.playPrev();
     }
     
     public static void stopPlay() {
@@ -95,8 +95,8 @@ public class PlaylistController {
         musikController.getMusik();
         JPController.getJudulPlaylist();
         displayAllPlaylist();
-        play("P002");
-        playNext("P002");
-        playPrev("P002");
+        play("P001");
+        playNext();
+        playPrev();
     }
 }

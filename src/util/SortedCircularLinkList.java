@@ -143,25 +143,29 @@ public class SortedCircularLinkList {
         }
     }
 
-    public void playNext(String IDMusik) {
+    public String playNext(String IDMusik) {
         CircularLink current = findMusik(IDMusik);
         if (current != null) {
             current = current.next;
             current.displayLink();
             System.out.println(" sedang diputar.");
+            return current.getPlaylist().getIDMusik();
         } else {
             System.out.println("Musik tidak ada di palylist.");
+            return null;
         }
     }
 
-    public void playPrev(String IDMusik) {
+    public String playPrev(String IDMusik) {
         CircularLink current = findMusik(IDMusik);
         if (current != null) {
             current = current.prev;
             current.displayLink();
             System.out.println(" sedang diputar.");
+            return current.getPlaylist().getIDMusik();
         } else {
             System.out.println("Musik tidak ada di playlist.");
+            return null;
         }
     }
 }
