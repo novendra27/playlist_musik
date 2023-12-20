@@ -100,7 +100,7 @@ public class AppView {
     }
 
     private int player() {
-        System.out.println("1. Next");
+        System.out.println("\n1. Next");
         System.out.println("2. Previous");
         System.out.println("3. Stop");
 
@@ -110,7 +110,7 @@ public class AppView {
     }
 
     private int mainMenu() {
-        System.out.println("Menu:");
+        System.out.println("\nMenu:");
         System.out.println("1. Buat Playlist");
         System.out.println("2. Daftar Playlist");
         System.out.println("3. Hapus Playlist");
@@ -125,7 +125,7 @@ public class AppView {
     }
 
     private int playlistMenu() {
-        System.out.println("Menu Playlist:");
+        System.out.println("\nMenu Playlist:");
         System.out.println("1. Putar Playlist");
         System.out.println("2. Tambah Musik ke Playlist");
         System.out.println("3. Hapus Musik dari Playlist");
@@ -162,19 +162,23 @@ public class AppView {
 
                             int playerOption = player();
 
-                            switch (playerOption) {
-                                case 1:
-                                    pControl.playNext();
-                                    playlistMenu();
-                                case 2:
-                                    pControl.playPrev();
-                                    playlistMenu();
-                                case 3:
-                                    pControl.stopPlay();
-                                    playlistMenu();
-                                    break;
-                            }
-                            break;
+                            do {
+                                switch (playerOption) {
+                                    case 1:
+                                        pControl.playNext();
+                                        playerOption = player();
+                                        break;
+                                    case 2:
+                                        pControl.playPrev();
+                                        playerOption = player();
+                                        break;
+
+                                    case 3:
+                                        pControl.stopPlay();
+                                        break;
+                                }
+                            } while (playerOption != 3);
+                             break;
                         case 2:
                             addMusicToPlaylist();
                             System.out.println("Musik berhasil ditambah ke playlist");

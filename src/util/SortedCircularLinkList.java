@@ -65,7 +65,7 @@ public class SortedCircularLinkList {
 
         return null;
     }
-    
+
     public PlaylistModel findMusikInPlaylist(String IDMusik) {
         CircularLink current = first;
         do {
@@ -77,7 +77,7 @@ public class SortedCircularLinkList {
 
         return null;
     }
-    
+
     public CircularLink findMusik(String IDMusik) {
         CircularLink current = first;
         do {
@@ -89,7 +89,7 @@ public class SortedCircularLinkList {
 
         return null;
     }
-    
+
     public String findFirstIDMusik() {
         CircularLink current = first;
         if (current != null) {
@@ -101,7 +101,7 @@ public class SortedCircularLinkList {
     public void displayList(int index) {
         if (first != null) {
             CircularLink current = first;
-            System.out.print("Playlist " + current.playlist.getNamaPlaylist()+ " : ");
+            System.out.print("Playlist " + current.playlist.getNamaPlaylist() + " : ");
             do {
                 current.displayLink();
                 current = current.next;
@@ -132,8 +132,9 @@ public class SortedCircularLinkList {
         }
         return first.getPlaylist();
     }
-    
+
     public void play(String IDMusik) {
+        System.out.print("Now Playing: ");
         CircularLink current = findMusik(IDMusik);
         if (current != null) {
             current.displayLink();
@@ -143,11 +144,11 @@ public class SortedCircularLinkList {
     }
 
     public String playNext(String IDMusik) {
+        System.out.print("Now Playing: ");
         CircularLink current = findMusik(IDMusik);
         if (current != null) {
             current = current.next;
             current.displayLink();
-            System.out.println(" sedang diputar.");
             return current.getPlaylist().getIDMusik();
         } else {
             System.out.println("Musik tidak ada di palylist.");
@@ -156,12 +157,11 @@ public class SortedCircularLinkList {
     }
 
     public String playPrev(String IDMusik) {
+        System.out.print("Now Playing: ");
         CircularLink current = findMusik(IDMusik);
         if (current != null) {
             current = current.prev;
             current.displayLink();
-
-            System.out.println(" sedang diputar.");
             return current.getPlaylist().getIDMusik();
         } else {
             System.out.println("Musik tidak ada di playlist.");
