@@ -59,11 +59,4 @@ public class JudulPlaylistController {
             service.deleteJudulPlaylistService(IDJudulPlaylist);
         }
     }
-
-    public static void main(String[] args) {
-        getJudulPlaylist();
-        displayAllJudulPlaylist();
-        delete("J006");
-        displayAllJudulPlaylist();
-    }
 }

@@ -5,14 +5,15 @@ import service.DBService;
 import util.LinkedListMusik;
 
 public class MusikController {
+
     private static DBService service;
     private static LinkedListMusik linkedListMusik = new LinkedListMusik();
 
-    public MusikController (DBService service) {
+    public MusikController(DBService service) {
         this.service = service;
         getMusik();
     }
-    
+
     public static void getMusik() {
         linkedListMusik = service.getMusikService();
     }
@@ -32,7 +33,7 @@ public class MusikController {
         int intID = Integer.parseInt(IDMusik.substring(3)) + 1;
         return generateID(intID);
     }
-    
+
     public static String generateID(int intID) {
         String IDMusik;
         if (intID < 10) {
@@ -44,22 +45,16 @@ public class MusikController {
         }
         return IDMusik;
     }
-    
-    public static MusikModel find(String IDMusik){
+
+    public static MusikModel find(String IDMusik) {
         return linkedListMusik.find(IDMusik);
     }
-    
-    public static void delete(String IDMusik){        
+
+    public static void delete(String IDMusik) {
         MusikModel musikModel = new MusikModel(find(IDMusik).getIDMusic(), find(IDMusik).getJudulMusic(), find(IDMusik).getArtis());
-        if ( musikModel != null) {
+        if (musikModel != null) {
             linkedListMusik.delete(IDMusik);
             service.deleteMusikService(IDMusik);
-        } 
-    }
-
-    public static void main(String[] args) {
-        getMusik();
-        displayAllMusik();
-        insertMusik("Judul-Judulan", "Om PMR");
+        }
     }
 }
