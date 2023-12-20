@@ -97,6 +97,7 @@ public class AppView {
         String choosenPlaylist = jPControl.generateID(Integer.parseInt(input.nextLine()));
         displayOnePlaylist(choosenPlaylist);
         pControl.play(choosenPlaylist);
+        System.out.println("");
     }
 
     private int player() {
@@ -162,17 +163,22 @@ public class AppView {
 
                             int playerOption = player();
 
-                            switch (playerOption) {
-                                case 1:
-                                    pControl.playNext();
-                                    playlistMenu();
-                                case 2:
-                                    pControl.playPrev();
-                                    playlistMenu();
-                                case 3:
-                                    pControl.stopPlay();
-                                    playlistMenu();
-                                    break;
+                            boolean kondisi = true;
+                            while (kondisi == true) {
+                                switch (playerOption) {
+                                    case 1:
+                                        pControl.playNext();
+                                        playerOption = player();
+                                        break;
+                                    case 2:
+                                        pControl.playPrev();
+                                        playerOption = player();
+                                        break;
+                                    case 3:
+                                        pControl.stopPlay();
+                                        kondisi = false;
+                                        break;
+                                    }
                             }
                             break;
                         case 2:
@@ -192,18 +198,18 @@ public class AppView {
                     try {
                     deletePlaylist();
                     System.out.println("Playlist berhasil dihapus!");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                break;
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
                 case 4: // only for add music
                     try {
                     addMusic();
                     System.out.println("Musik berhasil ditambahkan!");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                break;
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
                 case 5: // only for display music
                     displayMusic();
                     break;

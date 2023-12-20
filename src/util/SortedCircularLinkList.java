@@ -147,7 +147,7 @@ public class SortedCircularLinkList {
         if (current != null) {
             current = current.next;
             current.displayLink();
-            System.out.println(" sedang diputar.");
+            System.out.println("sedang diputar.");
             return current.getPlaylist().getIDMusik();
         } else {
             System.out.println("Musik tidak ada di palylist.");
