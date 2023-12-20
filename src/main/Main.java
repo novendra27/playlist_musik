@@ -7,7 +7,7 @@ import service.DBService;
 import view.AppView;
 
 public class Main {
-
+    
     public static void main(String[] args) {
         DBService service = new DBService();
         JudulPlaylistController jPControl = new JudulPlaylistController(service);
@@ -18,3 +18,4 @@ public class Main {
         run.init();
     }
 }
+    
