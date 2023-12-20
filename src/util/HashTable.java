@@ -8,6 +8,7 @@ public class HashTable {
     private int size;
     private int lastInsertIndex;
     private int lastPlayIndex;
+    private int hashPlayIndex;
 
     public HashTable(int size) {
         this.size = size;
@@ -60,6 +61,11 @@ public class HashTable {
         int hashVal = hashFunc(IDJudulPlaylist);
         return hashArray[hashVal].find(IDPlaylist);
     }
+    
+    public PlaylistModel findMusikInPlaylist(String IDMusik, String IDJudulPlaylist) {
+        int hashVal = hashFunc(IDJudulPlaylist);
+        return hashArray[hashVal].findMusikInPlaylist(IDMusik);
+    }
 
     public boolean isEmpty() {
         for (int i = 0; i < size; i++) {
@@ -82,19 +88,17 @@ public class HashTable {
         int hashVal = hashFunc(IDJudulPlaylist);
         String IDMusik = hashArray[hashVal].findFirstIDMusik();
         lastPlayIndex = Integer.parseInt(IDMusik.substring(3));
-        hashArray[hashVal].play(IDMusik);
+        hashArray[hashPlayIndex].play(IDMusik);
     }
 
-    public void playNext(String IDJudulPlaylist) {
-        System.out.println("Now Playing: ");
-        int hashVal = hashFunc(IDJudulPlaylist);
-        hashArray[hashVal].playNext(generateIDMusik(lastPlayIndex));
+    public void playNext() {
+        String temp = hashArray[hashPlayIndex].playNext(generateIDMusik(lastPlayIndex));
+        lastPlayIndex = Integer.parseInt(temp.substring(3));
     }
 
-    public void playPrev(String IDJudulPlaylist) {
-        System.out.println("Now Playing: ");
-        int hashVal = hashFunc(IDJudulPlaylist);
-        hashArray[hashVal].playPrev(generateIDMusik(lastPlayIndex));
+    public void playPrev() {
+        String temp = hashArray[hashPlayIndex].playPrev(generateIDMusik(lastPlayIndex));
+        lastPlayIndex = Integer.parseInt(temp.substring(3));
     }
 
     public void stopPlay() {
