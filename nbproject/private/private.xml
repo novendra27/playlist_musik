@@ -5,6 +5,9 @@
         <group>
             <file>file:/C:/Users/fahry/OneDrive/Desktop/playlist_musik/src/main/Main.java</file>
             <file>file:/C:/Users/fahry/OneDrive/Desktop/playlist_musik/src/controller/PlaylistController.java</file>
+            <file>file:/C:/Users/fahry/OneDrive/Desktop/playlist_musik/src/util/HashTable.java</file>
+            <file>file:/C:/Users/fahry/OneDrive/Desktop/playlist_musik/src/util/SortedCircularLinkList.java</file>
+            <file>file:/C:/Users/fahry/OneDrive/Desktop/playlist_musik/src/model/MusikModel.java</file>
             <file>file:/C:/Users/fahry/OneDrive/Desktop/playlist_musik/src/controller/MusikController.java</file>
             <file>file:/C:/Users/fahry/OneDrive/Desktop/playlist_musik/src/controller/JudulPlaylistController.java</file>
             <file>file:/C:/Users/fahry/OneDrive/Desktop/playlist_musik/src/view/AppView.java</file>
