@@ -13,6 +13,7 @@ public class PlaylistController {
 
     public PlaylistController(DBService service) {
         this.service = service;
+        getPlaylist();
     }
     
     public static void getPlaylist() {
@@ -54,16 +55,20 @@ public class PlaylistController {
         return IDPlaylist;
     }
 
-    public static void play(String IDJudulPlaylist, String IDMusik) {
-        hashTable.play(IDJudulPlaylist, IDMusik);
+    public static void play(String IDJudulPlaylist) {
+        hashTable.play(IDJudulPlaylist);
     }
 
-    public static void playNext(String IDJudulPlaylist, String IDMusik) {
-        hashTable.playNext(IDJudulPlaylist, IDMusik);
+    public static void playNext(String IDJudulPlaylist) {
+        hashTable.playNext(IDJudulPlaylist);
     }
 
-    public static void playPrev(String IDJudulPlaylist, String IDMusik) {
-        hashTable.playPrev(IDJudulPlaylist, IDMusik);
+    public static void playPrev(String IDJudulPlaylist) {
+        hashTable.playPrev(IDJudulPlaylist);
+    }
+    
+    public static void stopPlay() {
+        hashTable.stopPlay();
     }
     
     //Mencari playlistModel
@@ -84,8 +89,10 @@ public class PlaylistController {
     public static void main(String[] args) {
         getPlaylist();
         musikController.getMusik();
+        JPController.getJudulPlaylist();
         displayAllPlaylist();
-        insertMusicToPlaylist("J005", "M006");
-        displayAllPlaylist();
+        play("P002");
+        playNext("P002");
+        playPrev("P002");
     }
 }

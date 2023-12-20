@@ -77,6 +77,14 @@ public class SortedCircularLinkList {
 
         return null;
     }
+    
+    public String findFirstIDMusik() {
+        CircularLink current = first;
+        if (current != null) {
+            return current.playlist.getIDMusik();
+        }
+        return null;
+    }
 
     public void displayList(int index) {
         if (first != null) {
