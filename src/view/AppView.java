@@ -74,7 +74,7 @@ public class AppView {
         String choosenMusic = mControl.generateID(Integer.parseInt(input.nextLine()));
         
         pControl.insertMusicToPlaylist(choosenPlaylist, choosenMusic);
-        pControl.displayAllPlaylist();
+        pControl.displayPlaylist(choosenPlaylist);
     }
     
     private void removeMusicFromPlaylist() {
@@ -82,15 +82,34 @@ public class AppView {
         System.out.print("Pilih PLaylist: ");
         String choosenPlaylist = jPControl.generateID(Integer.parseInt(input.nextLine()));
         
-        pControl.displayPlaylist(choosenPlaylist);
+        displayOnePlaylist(choosenPlaylist);
         displayMusic();
         System.out.print("Pilih Musik: ");
         String choosenMusic = mControl.generateID(Integer.parseInt(input.nextLine()));
         
         pControl.removeMusicFromPlaylist(choosenPlaylist, choosenMusic);
-        pControl.displayAllPlaylist();
+        pControl.displayPlaylist(choosenPlaylist);
     }
-
+    
+    
+    private void playPlaylist() {
+        displayAllJudulPlaylist();
+        System.out.print("Pilih Playlist: ");
+        String choosenPlaylist = jPControl.generateID(Integer.parseInt(input.nextLine()));
+        displayOnePlaylist(choosenPlaylist);
+        pControl.play(choosenPlaylist);
+    }
+    
+    private int player() {
+        System.out.println("1. Next");
+        System.out.println("2. Previous");
+        System.out.println("3. Stop");
+        
+        System.out.print("Pilih Menu: ");
+        int userChoice  = Integer.parseInt(input.nextLine());
+        return userChoice;
+    }
+    
     private int mainMenu() {
         System.out.println("Menu:");
         System.out.println("1. Buat Playlist");
@@ -119,7 +138,7 @@ public class AppView {
     }
 
     public void init() {
-        System.out.println("========== Selamat Datang Di Playify ==========");
+        System.out.println("=========== Selamat Datang Di Playify ===========");
 
         while (true) {
             int userChoice = mainMenu();
@@ -139,8 +158,25 @@ public class AppView {
                     int playlistOption = playlistMenu();
                     
                     switch (playlistOption) {
-                        case 1:
-                            System.out.println("Playlist diputar");
+                        case 1: // only for play playlist
+                            playPlaylist();
+                            
+                            int playerOption = player();
+                            
+                            switch(playerOption) {
+                                case 1: 
+                                      System.out.println("Play next");
+//                                    pControl.playNext(IDJudulPlaylist);
+                                      playlistMenu();
+                                case 2:
+                                      System.out.println("Play prev");
+//                                    pControl.playPrev(IDJudulPlaylist);
+                                      playlistMenu();
+                                case 3:
+                                    pControl.stopPlay();
+                                    playlistMenu();
+                                    break;
+                            }
                             break;
                         case 2:
                             addMusicToPlaylist();

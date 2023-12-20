@@ -14,6 +14,8 @@ public class PlaylistController {
     public PlaylistController(DBService service) {
         this.service = service;
         getPlaylist();
+        JPController.getJudulPlaylist();
+        musikController.getMusik();
     }
     
     public static void getPlaylist() {
@@ -24,7 +26,7 @@ public class PlaylistController {
         hashTable.displayTable();
     }
 
-    //Display satu playlist sesuai parameter
+    // Display satu playlist sesuai parameter
     public static void displayPlaylist(String IDJudulPlaylist) {
         JPController.getJudulPlaylist();
         hashTable.displayTable(IDJudulPlaylist, JPController.find(IDJudulPlaylist).getNamaPlaylist());
@@ -71,7 +73,7 @@ public class PlaylistController {
         hashTable.stopPlay();
     }
     
-    //Mencari playlistModel
+    // Mencari playlistModel
     public static PlaylistModel find(String IDPlaylist, String IDJudulPlaylist){
         return hashTable.find(IDPlaylist, IDJudulPlaylist);
     }
@@ -87,12 +89,10 @@ public class PlaylistController {
     }
 
     public static void main(String[] args) {
-        getPlaylist();
-        musikController.getMusik();
-        JPController.getJudulPlaylist();
         displayAllPlaylist();
         play("P002");
         playNext("P002");
+        stopPlay();
         playPrev("P002");
     }
 }

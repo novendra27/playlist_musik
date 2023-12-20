@@ -18,15 +18,19 @@ public class HashTable {
     }
 
     public void displayTable() {
+        System.out.println("=================================================");
         System.out.println("Daftar Playlist Beserta Lagunya : ");
         for (int j = 0; j < size; j++) {
             hashArray[j].displayList(j);
         }
+        System.out.println("=================================================");
     }
 
     public void displayTable(String IDJudulPlaylist, String namaPlaylist) {
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         int index = hashFunc(IDJudulPlaylist);
         hashArray[index].displayAllList(index, namaPlaylist);
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
     public int hashFuncChangeData(String IDJudulPlaylist) {
@@ -34,7 +38,7 @@ public class HashTable {
         lastInsertIndex = idHash % size;
         return idHash % size;
     }
-    
+
     public int hashFunc(String IDJudulPlaylist) {
         int idHash = Integer.parseInt(IDJudulPlaylist.substring(3)) - 1;
         return idHash % size;
@@ -72,8 +76,9 @@ public class HashTable {
         }
         return null;
     }
-    
+
     public void play(String IDJudulPlaylist) {
+        System.out.println("Now Playing: ");
         int hashVal = hashFunc(IDJudulPlaylist);
         String IDMusik = hashArray[hashVal].findFirstIDMusik();
         lastPlayIndex = Integer.parseInt(IDMusik.substring(3));
@@ -81,19 +86,21 @@ public class HashTable {
     }
 
     public void playNext(String IDJudulPlaylist) {
+        System.out.println("Now Playing: ");
         int hashVal = hashFunc(IDJudulPlaylist);
         hashArray[hashVal].playNext(generateIDMusik(lastPlayIndex));
     }
 
     public void playPrev(String IDJudulPlaylist) {
+        System.out.println("Now Playing: ");
         int hashVal = hashFunc(IDJudulPlaylist);
         hashArray[hashVal].playPrev(generateIDMusik(lastPlayIndex));
     }
-    
+
     public void stopPlay() {
         lastPlayIndex = 0;
     }
-    
+
     public static String generateIDMusik(int intID) {
         String IDMusik;
         if (intID < 10) {

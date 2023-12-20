@@ -27,6 +27,7 @@ public class LinkedListJP {
     }
 
     public void displayList() {
+        System.out.println("====================================================");
         System.out.println("Daftar Judul Playlist yang Tersedia : ");
         NodeJP current = first;
         int i = 1;
@@ -35,7 +36,7 @@ public class LinkedListJP {
             current.displayNodeJP();
             current = current.next;
         }
-        System.out.println("");
+        System.out.println("====================================================");
     }
 
     public void insertLast(JudulPlaylistModel Data) {

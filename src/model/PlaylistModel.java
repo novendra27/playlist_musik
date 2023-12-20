@@ -37,6 +37,6 @@ public class PlaylistModel {
     }
     
     public void displayPlaylist() {
-        System.out.print(JudulMusik + ", ");
+        System.out.println(JudulMusik);
     }
 }

@@ -15,6 +15,7 @@ public class LinkedListMusik {
     }
 
     public void displayList() {
+        System.out.println("=================================================");
         System.out.println("Daftar Musik yang Tersedia : ");
         NodeMusik current = first;
         int i = 1;
@@ -23,7 +24,7 @@ public class LinkedListMusik {
             current.displayNodeMusik();
             current = current.next;
         }
-        System.out.println("");
+        System.out.println("=================================================");
     }
 
     public void insertLast(MusikModel Data) {

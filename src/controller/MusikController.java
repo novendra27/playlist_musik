@@ -61,7 +61,5 @@ public class MusikController {
         getMusik();
         displayAllMusik();
         insertMusik("Judul-Judulan", "Om PMR");
-//        delete("M006");
-//        displayAllMusik();
     }
 }
